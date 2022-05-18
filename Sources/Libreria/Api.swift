@@ -8,7 +8,7 @@ import Foundation
 import MobileCoreServices
 
 
-public class Api{
+open class Api{
     private static let boundary = UUID().uuidString
     
     private static let session:URLSession = URLSession.shared
