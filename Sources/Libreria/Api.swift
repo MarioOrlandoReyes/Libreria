@@ -19,7 +19,7 @@ public class Api{
     static var isRefresing = false
     
     
-    static func request(url:URLRequest,completion: @escaping (Data?,CodeResponse) -> ()){
+    public static func request(url:URLRequest,completion: @escaping (Data?,CodeResponse) -> ()){
         //Check conection
         if !NetworkMonitor.isConnectedToNetwork(){
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -47,7 +47,7 @@ public class Api{
 
 
     
-    static func makeURLRequest(url: URL,method: Method = .GET,parameters: [String:Any]? = nil,headers: [String:String]? = nil,contentType:ContentType = .json) -> URLRequest{
+    public static func makeURLRequest(url: URL,method: Method = .GET,parameters: [String:Any]? = nil,headers: [String:String]? = nil,contentType:ContentType = .json) -> URLRequest{
 
         var urlRequest:URLRequest = URLRequest(url: url)
         urlRequest.httpMethod = method.rawValue
@@ -108,13 +108,13 @@ public class Api{
     
  
     
-    enum Method: String{
+    public enum Method: String{
         case GET
         case POST
         case DELETE
     
     }
-    enum ContentType: String{
+    public enum ContentType: String{
         case json = "application/json"
         case form = "application/x-www-form-urlencoded"
         case multipart = "multipart/form-data"
@@ -124,7 +124,7 @@ public class Api{
 }
 
 
-enum CodeResponse: Int{
+public enum CodeResponse: Int{
     case success = 200
     case sinContenido = 201
     case noContent = 204
